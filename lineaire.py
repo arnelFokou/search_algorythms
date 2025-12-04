@@ -1,18 +1,17 @@
 #implementation of function dichotomie
 import time
 
+def linear_search(liste_sorted, value):     
+    search_value = value
 
-liste_sorted = [number for number in range(100_000_000)]
-search_value = 1_000_000
+    start_time = time.perf_counter()
+    for index_element,element in enumerate(liste_sorted):
+        if element == search_value:
+            end_time = time.perf_counter()
+            return (index_element,end_time - start_time)
+    else:
+        end_time = time.perf_counter()
+        return (None,end_time - start_time)
 
-start = time.perf_counter()
-for element in liste_sorted:
-    if element == search_value:
-        print("value found")
-        break
-else:
-    print("value not found")
 
-end = time.perf_counter()
-print("Execution time:", end - start)
 

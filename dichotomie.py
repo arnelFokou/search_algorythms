@@ -1,23 +1,28 @@
 #implementation of function dichotomie
+import time
 
-liste_sorted = [1,2,3,4,5,6,7,8,9,10]
+liste_sorted = [number for number in range(100_000_000)]
 
 start,mid = 0,0
-end = len(liste_sorted)
-search_value = 12
-while start != end :
+end = len(liste_sorted) -1
+search_value = 100_000_000
+
+start_time = time.perf_counter()
+while start <= end :
     mid =(start + end )//2
     if liste_sorted[mid] == search_value:
         print("value found")
         break
     else:
         if liste_sorted[mid] < search_value:
-            start =mid +1 
+            start = mid +1 
         else:
-            end = mid -1
-    print(mid)
+            end = mid - 1
 
 if liste_sorted[mid] == search_value:
     print("le nombre a ete trouve")
 else:
     print("le nombre n'a pas ete trouve")
+
+end_time = time.perf_counter()
+print("Execution time:", end_time - start_time)
